@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Gaming Dark Theme - Always Dark Mode */
+    --background: 240 10% 3%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 8% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Neon Purple Primary */
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 271 100% 75%;
+
+    /* Cyan Secondary */
+    --secondary: 190 90% 50%;
+    --secondary-foreground: 240 10% 3%;
+
+    --muted: 240 8% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Neon Pink Accent */
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 8% 20%;
+    --input: 240 8% 12%;
+    --ring: 271 91% 65%;
+
+    --radius: 0.75rem;
+
+    /* Custom Gaming Colors */
+    --neon-purple: 271 91% 65%;
+    --neon-cyan: 190 90% 50%;
+    --neon-pink: 330 85% 60%;
+    --neon-green: 142 70% 45%;
+    --neon-yellow: 50 100% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-cyan)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--neon-pink)), hsl(var(--neon-purple)));
+    --gradient-dark: linear-gradient(180deg, hsl(240 10% 5%), hsl(240 10% 10%));
+    --gradient-card: linear-gradient(135deg, hsl(240 8% 8%), hsl(240 8% 12%));
+    --gradient-hero: linear-gradient(135deg, hsl(271 91% 65% / 0.1), hsl(190 90% 50% / 0.1));
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 30px hsl(var(--neon-purple) / 0.5);
+    --shadow-neon-lg: 0 0 60px hsl(var(--neon-purple) / 0.3);
+    --shadow-card: 0 10px 40px hsl(240 10% 3% / 0.8);
+    --glow-purple: 0 0 20px hsl(var(--neon-purple) / 0.6);
+    --glow-cyan: 0 0 20px hsl(var(--neon-cyan) / 0.6);
+    --glow-pink: 0 0 20px hsl(var(--neon-pink) / 0.6);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar */
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 271 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 8% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 8% 15%;
+    --sidebar-ring: 271 91% 65%;
+  }
+
+  /* Keeping dark theme always active */
+  .dark {
+    --background: 240 10% 3%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 8% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 9%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 271 91% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 190 90% 50%;
+    --secondary-foreground: 240 10% 3%;
+
+    --muted: 240 8% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 330 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 8% 20%;
+    --input: 240 8% 12%;
+    --ring: 271 91% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Custom Gaming Animations */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8),
+                 0 0 20px hsl(var(--neon-purple) / 0.6),
+                 0 0 30px hsl(var(--neon-purple) / 0.4);
+  }
+  50% {
+    opacity: 0.95;
+    text-shadow: 0 0 15px hsl(var(--neon-purple) / 0.9),
+                 0 0 25px hsl(var(--neon-purple) / 0.7),
+                 0 0 35px hsl(var(--neon-purple) / 0.5);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Glassmorphism Effect */
+.glass {
+  background: hsl(240 8% 8% / 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsl(240 8% 20% / 0.3);
+}
+
+/* Neon Text Effects */
+.neon-text {
+  text-shadow: 0 0 10px currentColor,
+               0 0 20px currentColor,
+               0 0 30px currentColor;
+}
